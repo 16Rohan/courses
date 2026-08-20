@@ -45,6 +45,23 @@ Thumbs.db
 # Logs
 *.log
 
-# Your existing patterns
-*.out
+# Executables and Binary Files
 *.exe
+*.out
+*.dll
+*.so
+*.dylib
+*.a
+*.o
+*.obj
+*.class
+*.jar
+!*.zip
+*.tar
+*.gz
+*.7z
+!*.png
+!*.jpg
+!*.jpeg
+*.gif
+!*.pdf

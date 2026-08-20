@@ -34,11 +34,11 @@ int main(){
     fflush(stdout);
 
     for(i = 0; i < 5; i++){
-        write(1, "Enter any messsage: ", 19);
+        write(1, "Enter messsage: ", 16);
         n = read(0, buff1, 80);
         send(sockfd, buff1, n, 0);
         n = recv(sockfd, buff2, 80, 0);
-        write(1, "Client has recieved: ", 21);
+        write(1, "Client recieved: ", 17);
         write(1, buff2, n);
     }
 
