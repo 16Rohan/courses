@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <link rel="stylesheet" href="styles.css" />
+  <head>
+    <title>Registration Form</title>
+    <h1>Stupid Ass Registration Form</h1>
+  </head>
+  <body>
+    <form id="regform">
+      Enter your name:
+      <input name="name" type="text" placeholder="Enter your name" required />
+      <br /><br />
+      Enter your Roll Number:
+      <input
+        name="rollno"
+        type="text"
+        placeholder="Enter your roll number"
+        required
+      />
+      <br /><br />
+      Enter your gender:
+      <label>
+        <input name="Gender" value="Male" type="radio" />
+        Male
+      </label>
+      <label>
+        <input name="Gender" value="Female" type="radio" />
+        Female
+      </label>
+      <label>
+        <input name="Gender" value="Non-Binary" type="radio" />
+        Non-Binary
+      </label>
+      <label>
+        <input name="Gender" value="PreferNot" type="radio" />
+        Prefer Not to Say
+      </label>
+      <label>
+        <input name="Gender" value="Avenger" type="radio" />
+        Avenger
+      </label>
+      <br /><br />
+      <label for="Gender">Other</label>
+      <input name="Gender" value="Please Specify" type="text" />
+      <br />
+      <br />
+      Enter your date of birth:
+      <input type="date" name="bday" />
+      <br />
+      <br />
+      Favourite Color:
+      <input type="color" name="color" />
+      <br />
+      <br />
+      Preffered Time:
+      <input type="time" name="time" />
+      <br /><br />
+      Preffered Course:
+      <select>
+        <option value="">Select Course</option>
+        <option value="DS">Data Structures</option>
+        <option value="AI">Artificial Intelligence</option>
+        <option value="ML">Machine Lerning</option>
+        <option value="CO">Computer Organization</option>
+        <option value="KBP">Kill Bill Pandey</option>
+        <option value="DRRF">Dharileni Rohit Rao Fundamentals</option>
+        <option value="DRRF">Dharileni Rohit Rao Advanced</option>
+      </select>
+      <p>
+        <button type="submit" name="Submit">Submit</button>
+        <button type="reset" name="Clear">Clear</button>
+      </p>
+    </form>
+  </body>
+  <script src="script.js"></script>
+</html>
