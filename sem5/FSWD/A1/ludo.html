@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+	<head>
+		<title>LUDO Game</title>
+
+		<style>
+			body {
+				font-family: Arial;
+				text-align: center;
+			}
+
+			table {
+				border-collapse: collapse;
+				margin: auto;
+			}
+
+			td {
+				width: 35px;
+				height: 35px;
+				border: 1px solid black;
+				text-align: center;
+			}
+
+			.red {
+				background-color: red;
+			}
+
+			.green {
+				background-color: green;
+			}
+
+			.yellow {
+				background-color: yellow;
+			}
+
+			.blue {
+				background-color: blue;
+			}
+
+			.white {
+				background-color: white;
+			}
+
+			.redpath {
+				background-color: #ff9999;
+			}
+
+			.greenpath {
+				background-color: #99ff99;
+			}
+
+			.yellowpath {
+				background-color: #ffff99;
+			}
+
+			.bluepath {
+				background-color: #99ccff;
+			}
+
+			.token {
+				width: 22px;
+				height: 22px;
+				border-radius: 50%;
+				display: inline-block;
+				border: 2px solid black;
+			}
+
+			.redtoken {
+				background-color: red;
+			}
+
+			.greentoken {
+				background-color: green;
+			}
+
+			.yellowtoken {
+				background-color: yellow;
+			}
+
+			.bluetoken {
+				background-color: blue;
+			}
+
+			.center {
+				background-color: orange;
+				font-weight: bold;
+			}
+
+			.dice {
+				margin: 15px;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>LUDO GAME</h1>
+
+		<div class="dice">Player: <b>Red</b> &nbsp;&nbsp; Dice: <b>6</b></div>
+
+		<table>
+			<!-- Row 1 -->
+			<tr>
+				<td rowspan="6" colspan="6" class="red">
+					<span class="token redtoken"></span>
+					<span class="token redtoken"></span>
+					<br /><br />
+					<span class="token redtoken"></span>
+					<span class="token redtoken"></span>
+					<br />
+					RED HOME
+				</td>
+
+				<td class="white"></td>
+				<td class="white"></td>
+				<td class="greenpath"></td>
+
+				<td rowspan="6" colspan="6" class="green">
+					<span class="token greentoken"></span>
+					<span class="token greentoken"></span>
+					<br /><br />
+					<span class="token greentoken"></span>
+					<span class="token greentoken"></span>
+					<br />
+					GREEN HOME
+				</td>
+			</tr>
+
+			<!-- Row 2 -->
+			<tr>
+				<td class="redpath"></td>
+				<td class="greenpath"></td>
+				<td class="greenpath"></td>
+			</tr>
+
+			<!-- Row 3 -->
+			<tr>
+				<td class="redpath"></td>
+				<td class="greenpath"></td>
+				<td class="greenpath"></td>
+			</tr>
+
+			<!-- Row 4 -->
+			<tr>
+				<td class="redpath"></td>
+				<td class="greenpath"></td>
+				<td class="greenpath"></td>
+			</tr>
+
+			<!-- Row 5 -->
+			<tr>
+				<td class="redpath"></td>
+				<td class="greenpath"></td>
+				<td class="greenpath"></td>
+			</tr>
+
+			<!-- Row 6 -->
+			<tr>
+				<td class="redpath"></td>
+				<td class="greenpath"></td>
+				<td class="greenpath"></td>
+			</tr>
+
+			<!-- Middle section -->
+			<tr>
+				<td colspan="6" class="redpath"></td>
+
+				<td class="redpath"></td>
+				<td class="white"></td>
+				<td class="greenpath"></td>
+
+				<td colspan="6" class="greenpath"></td>
+			</tr>
+
+			<tr>
+				<td colspan="6" class="redpath"></td>
+
+				<td class="redpath"></td>
+
+				<td class="center" rowspan="2" colspan="2">WIN</td>
+
+				<td class="greenpath"></td>
+
+				<td colspan="6" class="greenpath"></td>
+			</tr>
+
+			<tr>
+				<td colspan="6" class="redpath"></td>
+
+				<td class="redpath"></td>
+
+				<td class="greenpath"></td>
+
+				<td colspan="6" class="greenpath"></td>
+			</tr>
+
+			<!-- Bottom section -->
+			<tr>
+				<td rowspan="6" colspan="6" class="yellow">
+					<span class="token yellowtoken"></span>
+					<span class="token yellowtoken"></span>
+					<br /><br />
+					<span class="token yellowtoken"></span>
+					<span class="token yellowtoken"></span>
+					<br />
+					YELLOW HOME
+				</td>
+
+				<td class="yellowpath"></td>
+				<td class="yellowpath"></td>
+				<td class="bluepath"></td>
+
+				<td rowspan="6" colspan="6" class="blue">
+					<span class="token bluetoken"></span>
+					<span class="token bluetoken"></span>
+					<br /><br />
+					<span class="token bluetoken"></span>
+					<span class="token bluetoken"></span>
+					<br />
+					BLUE HOME
+				</td>
+			</tr>
+
+			<tr>
+				<td class="yellowpath"></td>
+				<td class="bluepath"></td>
+				<td class="bluepath"></td>
+			</tr>
+
+			<tr>
+				<td class="yellowpath"></td>
+				<td class="bluepath"></td>
+				<td class="bluepath"></td>
+			</tr>
+
+			<tr>
+				<td class="yellowpath"></td>
+				<td class="bluepath"></td>
+				<td class="bluepath"></td>
+			</tr>
+
+			<tr>
+				<td class="yellowpath"></td>
+				<td class="bluepath"></td>
+				<td class="bluepath"></td>
+			</tr>
+
+			<tr>
+				<td class="yellowpath"></td>
+				<td class="yellowpath"></td>
+				<td class="bluepath"></td>
+			</tr>
+		</table>
+
+		<p>
+			<b>Players:</b>
+			Red | Green | Yellow | Blue
+		</p>
+	</body>
+</html>

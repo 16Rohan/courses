@@ -1,0 +1,10 @@
+Enter a number: 36
+36 is not a Perfect number.
+Nearest Perfect number less than 36 is 28.
+
+Enter a number: 12
+12 is not a Perfect number.
+Nearest Perfect number less than 12 is 6.
+
+Enter a number: 6
+6 is a Perfect number.
