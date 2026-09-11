@@ -1,0 +1,22 @@
+body .instructions{
+    display: flex;
+    border: solid black 2px;
+    border-radius: 20px;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    width:fit-content;
+    margin: 0 auto;
+}
+
+#cat {
+    position: absolute;
+    width: 500px;
+    height: auto;
+}
+
+
+
+body{
+    gap: 10px;
+}
