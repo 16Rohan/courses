@@ -1,4 +1,3 @@
-const { count } = require("console");
 const readline = require("readline")
 
 const rl = readline.createInterface({
@@ -7,17 +6,16 @@ const rl = readline.createInterface({
 });
 
 
-rl.question("Enter array: ", (str)=>{
+rl.question("Enter array: ", (arr)=>{
+    arr = arr.split(" ");
+    // console.log(arr);
     
-    dict = {}
+    for(let i = 0; i < arr.length; i++){
+        arr[i] = Number(arr[i]);
+    }
+    arr.sort();
 
-    let strcpy = new Set(str.split(""));
-    strcpy.forEach((char) => {
-        count = 0;
-        for(let i = 0; i < str.length; i++){
-            if(str[i] === char) count++;
-        }
-        dict[char] = count;
-    })
+    console.log(`Smallest: ${arr[0]}`);
+    if(arr.length > 1) console.log(`Second Largest: ${arr[arr.length - 2]}`);
     rl.close();
 })
