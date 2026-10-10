@@ -1,0 +1,26 @@
+h1 {
+  font-color: blue;
+  font-size: 36px;
+  align-text: center;
+  margin: 0 auto;
+}
+
+body {
+  padding: 10px;
+}
+
+table {
+  border: 1px solid black;
+  border-width: 1px;
+
+  width: 100%;
+}
+
+th,
+td,
+tr {
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  padding: 3pt;
+  border-spacing: 1;
+}
