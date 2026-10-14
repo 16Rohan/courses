@@ -39,14 +39,14 @@ def crossover_pops(population: list[chrome]):
         population[i].binstr, population[i+1].binstr = crossover_strs(population[i].binstr, population[i+1].binstr)
     
 def mutate_population(population: list[chrome]):
-    mutate_1_MAX = 20
-    mutate_2_MAX = 75
+    mutate_MAX = 20
     mutation_chance = random.randint(1,100)
 
-    if mutation_chance > mutate_1_MAX:
-
-
-
+    if mutation_chance > mutate_MAX:
+        i = random.randint(0,3)
+        j = random.randint(0,7)
+        cur = population[i].binstr[j]
+        population[i].binstr = population[i].binstr[:j] + ("0" if cur == "1" else 1) + population[i].binstr[j+1:]
 
 def fitness(chromo):
     # pop is a binary string, we have to count the number of 1s in the binary string.
@@ -87,5 +87,7 @@ if __name__ == "__main__":
         crossover_pops(population)
         # Mutation
         mutate_population(population)
+
+    
 
 
