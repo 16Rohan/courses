@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>3D Cube Runner</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #101827;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    #hud {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1;
+    }
+
+    #hint {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="hud">
+    <h2>3D Cube Runner</h2>
+    Score: <span id="score">0</span>
+  </div>
+  <div id="hint">Use ← → arrow keys to move</div>
+
+  <script type="module">
+    import * as THREE from
+      'https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js';
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x101827);
+
+    const camera = new THREE.PerspectiveCamera(
+      70, innerWidth / innerHeight, 0.1, 1000
+    );
+    camera.position.set(0, 5, 9);
+    camera.lookAt(0, 0, -5);
+
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true
+    });
+    renderer.setSize(innerWidth, innerHeight);
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    document.body.appendChild(renderer.domElement);
+
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x334455, 2));
+
+    const light = new THREE.DirectionalLight(0xffffff, 2);
+    light.position.set(3, 8, 5);
+    scene.add(light);
+
+    // Track
+    const road = new THREE.Mesh(
+      new THREE.BoxGeometry(8, 0.2, 100),
+      new THREE.MeshStandardMaterial({ color: 0x28364a })
+    );
+    road.position.set(0, -0.2, -35);
+    scene.add(road);
+
+    // Lane markings
+    for (let z = 5; z > -80; z -= 5) {
+      const line = new THREE.Mesh(
+        new THREE.BoxGeometry(0.08, 0.02, 1.5),
+        new THREE.MeshBasicMaterial({ color: 0x55ddff })
+      );
+      line.position.set(0, -0.08, z);
+      scene.add(line);
+    }
+
+    // Player
+    const player = new THREE.Mesh(
+      new THREE.BoxGeometry(1, 1, 1),
+      new THREE.MeshStandardMaterial({
+        color: 0x00ccff,
+        metalness: 0.3,
+        roughness: 0.25
+      })
+    );
+    player.position.set(0, 0.5, 3);
+    scene.add(player);
+
+    const obstacles = [];
+    let score = 0;
+    let gameOver = false;
+    let spawnTimer = 0;
+
+    function spawnObstacle() {
+      const obstacle = new THREE.Mesh(
+        new THREE.BoxGeometry(1.2, 1.2, 1.2),
+        new THREE.MeshStandardMaterial({
+          color: 0xff3355
+        })
+      );
+
+      const lanes = [-2.5, 0, 2.5];
+      obstacle.position.set(
+        lanes[Math.floor(Math.random() * lanes.length)],
+        0.6,
+        -45
+      );
+
+      scene.add(obstacle);
+      obstacles.push(obstacle);
+    }
+
+    const keys = {};
+
+    addEventListener('keydown', e => {
+      keys[e.key] = true;
+
+      if (gameOver && e.key === 'Enter') {
+        location.reload();
+      }
+    });
+
+    addEventListener('keyup', e => {
+      keys[e.key] = false;
+    });
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      if (!gameOver) {
+        if (keys.ArrowLeft || keys.a) {
+          player.position.x -= 0.12;
+        }
+
+        if (keys.ArrowRight || keys.d) {
+          player.position.x += 0.12;
+        }
+
+        player.position.x = THREE.MathUtils.clamp(
+          player.position.x, -3.2, 3.2
+        );
+
+        spawnTimer++;
+        if (spawnTimer > 30) {
+          spawnObstacle();
+          spawnTimer = 0;
+        }
+
+        for (let i = obstacles.length - 1; i >= 0; i--) {
+          const o = obstacles[i];
+          o.position.z += 0.7;
+          o.rotation.x += 0.01;
+          o.rotation.y += 0.02;
+
+          if (
+            Math.abs(o.position.x - player.position.x) < 1 &&
+            Math.abs(o.position.z - player.position.z) < 1.1
+          ) {
+            gameOver = true;
+            document.getElementById('hint').textContent =
+              'GAME OVER — Press Enter to restart';
+          }
+
+          if (o.position.z > 8) {
+            scene.remove(o);
+            obstacles.splice(i, 1);
+            score++;
+            document.getElementById('score').textContent = score;
+          }
+        }
+
+        player.rotation.z =
+          (player.position.x / 3.2) * -0.12;
+      }
+
+      renderer.render(scene, camera);
+    }
+
+    addEventListener('resize', () => {
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(innerWidth, innerHeight);
+    });
+
+    animate();
+  </script>
+</body>
+</html>
