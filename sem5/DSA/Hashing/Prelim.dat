@@ -1,0 +1,11 @@
+It is better to use a hashmap than a hashtable in a single threaded environment. 
+In a Treemap, the time complexity for searching / inserting a key is log (n)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- 
+
+Problems for LeetCode: 
+
+1. Design Hashmap
+2. LRU Cache
+3. Subarray sum equals key
+4. Longest Consecutive Sequence.
